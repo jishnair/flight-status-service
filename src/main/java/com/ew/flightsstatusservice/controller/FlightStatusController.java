@@ -17,7 +17,6 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @RequiredArgsConstructor
 public class FlightStatusController {
-
     private final FlightStatusService flightStatusService;
 
     @GetMapping("/status")

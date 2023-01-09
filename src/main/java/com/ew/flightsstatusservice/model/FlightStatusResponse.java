@@ -1,8 +1,10 @@
 package com.ew.flightsstatusservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Builder
 public record FlightStatusResponse(String flight_iata,
                                    String dep_time,
                                    String dep_estimated,
