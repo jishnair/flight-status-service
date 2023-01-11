@@ -2,6 +2,13 @@ version: "3"
 
 services:
 
+  fligts-status:
+    image: flights-status-service
+    ports:
+      - "8080:8080"
+    links:
+      - logstash
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
     container_name: elasticsearch_flightsearch
@@ -31,7 +38,6 @@ services:
       - elastic
 
   logstash:
-    hostname: localhost
     image: docker.elastic.co/logstash/logstash:8.3.3
     container_name: logstash_flightsearch
     volumes:
@@ -48,6 +54,7 @@ services:
       - elastic
     depends_on:
       - elasticsearch
+
 
 networks:
   elastic:
