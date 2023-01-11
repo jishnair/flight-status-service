@@ -19,7 +19,6 @@ public class WebClientConfiguration {
     @Value("${airlabs.url}")
     private String baseUrl;
     public static final int TIMEOUT = 1000;
-
     @Bean
     public WebClient webClientWithTimeout() {
         var httpClient = HttpClient.create()

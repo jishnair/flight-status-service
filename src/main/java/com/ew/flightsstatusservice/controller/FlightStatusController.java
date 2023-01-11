@@ -21,6 +21,9 @@ public class FlightStatusController {
 
     @GetMapping("/status")
     public ResponseEntity<Mono<FlightStatusResponse>> getFlightStatus(@RequestParam String flightNumber) {
-        return new ResponseEntity<>(flightStatusService.getFlightStatus(flightNumber), HttpStatus.OK);
+        log.info("Received request for flight status for flight number: {}", flightNumber);
+        var flightStatusResponse = flightStatusService.getFlightStatus(flightNumber);
+        log.info("Flight status response for flight number: {} is successful", flightNumber);
+        return new ResponseEntity<>(flightStatusResponse, HttpStatus.OK);
     }
 }

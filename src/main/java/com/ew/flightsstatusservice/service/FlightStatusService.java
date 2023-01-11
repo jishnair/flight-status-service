@@ -39,7 +39,7 @@ public class FlightStatusService {
 
             if (jsonObject.has("error")) {
                 JSONObject error = jsonObject.getJSONObject("error");
-                log.error("Error code: " + error.getString("code") + " Error message: " + error.getString("message"));
+                log.error("Flight status search returned an Error, code: " + error.getString("code") + " message: " + error.getString("message"));
                 throw new FlightNotFoundException("Flight with number " + flightNumber + " not found");
             }
 
@@ -48,7 +48,7 @@ public class FlightStatusService {
             try {
                 flightStatusResponse = objectMapper.readValue(responseJson.toString(), FlightStatusResponse.class);
             } catch (JsonProcessingException e) {
-                log.error("Error while parsing response from airlabs: " + e.getMessage());
+                log.error("Error while parsing response from airlabs api: " + e.getMessage());
                 throw new FlightStatusServiceException("Internal server error");
             }
             return flightStatusResponse;
